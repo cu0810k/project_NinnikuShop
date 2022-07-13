@@ -170,7 +170,7 @@ export default {
   color: #fff;
   display: inline-block;
   border-radius: 100%;
-  font-size: 0.3rem;
+  font-size: 0.5rem;
   width: 16px;
   height: 16px;
   line-height: 16px;

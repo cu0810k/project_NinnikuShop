@@ -462,7 +462,7 @@ h3::after {
 }
 
 .cart-list-item .pic img {
-  width: 79px;
+  width: 72px;
   padding-top: 10px;
 }
 

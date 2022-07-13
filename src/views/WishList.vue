@@ -11,13 +11,13 @@
         <div class="wishList-inner">
           <h3>追蹤清單</h3>
           <div class="pic" v-if="wishProduct.length === 0">
-            <img src="../assets/noProduct.png" alt="" class="img-fluid">
+            <img src="../assets/noProduct.png" alt="" class="img-fluid" />
           </div>
           <div v-else>
             <table class="table table-hover align-middle wishList-table">
               <thead>
                 <tr>
-                  <th scope="col">商品圖片</th>
+                  <th scope="col">圖片</th>
                   <th scope="col">商品名稱</th>
                   <th scope="col">價格</th>
                   <th scope="col">刪除</th>
@@ -183,12 +183,12 @@ h3::after {
 }
 
 /*-----*/
-.wishList-inner .pic{
+.wishList-inner .pic {
   margin: 50px 0;
   text-align: center;
 }
 
-.wishList-inner .pic img{
+.wishList-inner .pic img {
   width: 600px;
 }
 
@@ -213,28 +213,39 @@ h3::after {
 }
 
 .wishList-table thead tr th:nth-child(1) {
-  width: 80px;
+  width: 20%;
+}
+
+.wishList-table thead tr th:nth-child(2) {
+  width: 40%;
 }
 
 .wishList-table thead tr th:nth-child(3) {
-  max-width: 100px;
+  width: 20%;
 }
 
 .wishList-table thead tr th:nth-child(4) {
-  max-width: 100px;
+  width: 20%;
 }
 
-.wishList-inner a{
-  color:#000;
+.wishList-inner a {
+  color: #000;
 }
 
 @media (min-width: 992px) {
   .wishList-inner {
     padding: 0 20px;
   }
-
   .wishList-table thead tr th:nth-child(1) {
-    width: 150px;
+    width: 10%;
+  }
+
+  .wishList-table thead tr th:nth-child(3) {
+    width: 25%;
+  }
+
+  .wishList-table thead tr th:nth-child(4) {
+    width: 25%;
   }
 }
 

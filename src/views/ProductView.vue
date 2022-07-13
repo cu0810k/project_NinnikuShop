@@ -51,7 +51,7 @@
             加入購物車
           </button>
           <button
-            class="btn-wish rounded"
+            class="btn-wish rounded mt-2"
             @click.prevent="addToWish(product.id)"
           >
             <i class="bi bi-heart-fill" v-if="wishProduct.includes(product.id)">
@@ -328,6 +328,20 @@ h3::after {
   text-align: center;
   text-decoration: none;
   border: 0px;
+  transition: .3s;
+}
+
+.btn-add:hover,
+.btn-wish:hover{
+  background: #d50000;
+  color:#fff;
+  transition: .3s;
+}
+
+.btn-wish:hover{
+  background: #e5e5e5;
+  color:#000;
+  transition: .3s;
 }
 
 .btn-wish {

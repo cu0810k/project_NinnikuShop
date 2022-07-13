@@ -141,6 +141,14 @@ export default {
 .bi-heart,
 .bi-list {
   color: #000;
+  font-size: 1.2rem;
+}
+
+@media (min-width: 992px) {
+  .bi-heart,
+  .bi-list {
+    font-size: 1rem;
+  }
 }
 
 /* navbar
@@ -162,15 +170,25 @@ export default {
   color: #fff;
   display: inline-block;
   border-radius: 100%;
-  font-size: 0.5rem;
-  width: 18px;
-  height: 18px;
-  line-height: 18px;
+  font-size: 0.3rem;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
   text-align: center;
   position: absolute;
   top: 8px;
   right: 8px;
   overflow: hidden;
+}
+
+@media (min-width: 992px) {
+  .collect .count,
+  .cart .count {
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 0.5rem;
+  }
 }
 
 .ham a {
@@ -257,7 +275,7 @@ export default {
 
 .navbar-btn a {
   display: block;
-  padding: 0.8rem 1rem;
+  padding: 1rem 1.2rem;
   display: flex;
   text-decoration: none;
   color: #fff;

@@ -40,16 +40,16 @@
                 >
                   <div class="pic">
                     <img
-                      :src="item.product.imageUrl"
-                      :alt="item.product.title"
+                      :src="item.product?.imageUrl"
+                      :alt="item.product?.title"
                       class="img-fluid"
                     />
                   </div>
                   <div class="title">
-                    {{ item.product.title }}
+                    {{ item.product?.title }}
                   </div>
                   <div class="unitPrice">
-                    {{ $currency(item.product.price) }}
+                    {{ $currency(item.product?.price) }}
                   </div>
                   <div class="count">
                     <div class="input-group">

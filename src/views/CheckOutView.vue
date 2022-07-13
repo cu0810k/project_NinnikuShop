@@ -92,7 +92,7 @@
                       :class="{ 'is-invalid': errors['姓名'] }"
                       placeholder="請輸入姓名"
                       rules="required"
-                      v-model="consigneeForm.user.name"
+                      v-model="form.user.name"
                     ></v-Field>
                     <error-message
                       name="姓名"
@@ -112,7 +112,7 @@
                       :class="{ 'is-invalid': errors['信箱'] }"
                       placeholder="請輸入 Email"
                       rules="email|required"
-                      v-model="consigneeForm.user.email"
+                      v-model="form.user.email"
                     ></v-Field>
 
                     <error-message
@@ -133,7 +133,7 @@
                       :class="{ 'is-invalid': errors['電話'] }"
                       placeholder="請輸入姓名"
                       rules="required|min:8|max:10"
-                      v-model="consigneeForm.user.tel"
+                      v-model="form.user.tel"
                     ></v-Field>
                     <error-message
                       name="電話"
@@ -152,7 +152,7 @@
                       :class="{ 'is-invalid': errors['地址'] }"
                       placeholder="請輸入 地址"
                       rules="required"
-                      v-model="consigneeForm.user.address"
+                      v-model="form.user.address"
                     ></v-Field>
                     <error-message
                       name="地址"
@@ -191,7 +191,7 @@ export default {
       pay: '貨到付款',
       tote: '宅配',
       tempTotal: 0,
-      consigneeForm: {
+      form: {
         user: {
           name: '',
           email: '',
@@ -322,12 +322,12 @@ export default {
       const url = process.env.VUE_APP_API // https://vue3-course-api.hexschool.io/v2
       const path = process.env.VUE_APP_PATH // vue_cu
 
-      this.consigneeForm.user.tote = this.tote
-      this.consigneeForm.user.pay = this.pay
+      this.form.user.tote = this.tote
+      this.form.user.pay = this.pay
 
-      // console.log(this.consigneeForm)
+      // console.log(this.form)
 
-      const data = this.consigneeForm
+      const data = this.form
       this.$http.post(`${url}/api/${path}/order`, { data })
         .then((res) => {
           // this.$refs.form.resetForm()

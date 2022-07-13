@@ -30,9 +30,11 @@
                   <div class="count d-none d-sm-block">數量</div>
                   <div class="totalPrice d-none d-sm-block">小計</div>
                 </div>
-                <div class="cart-list-item"
+                <div
+                  class="cart-list-item"
                   v-for="item in carts"
-                  :key="item.id">
+                  :key="item.id"
+                >
                   <div class="pic">
                     <img
                       :src="item.product.imageUrl"
@@ -63,12 +65,9 @@
                   <span>運費：</span>
                   <span>{{ $currency(fare) }}</span>
                 </div>
-                <div class="p-1 sum">
+                <div class="p-1 sum" v-show="couponCode">
                   <span>優惠碼：</span>
                   <span>{{ couponCode }}</span>
-                  <span style="color: #777">
-                    享{{ couponCode.replace(/[^0-9]/gi, "") }}折
-                  </span>
                 </div>
                 <div class="p-1 sum">
                   <span>合計：</span>
@@ -85,7 +84,8 @@
                     <label for="consigneeName" class="form-label">
                       收件人名稱
                     </label>
-                    <v-Field id="consigneeName"
+                    <v-Field
+                      id="consigneeName"
                       name="姓名"
                       type="text"
                       class="form-control"
@@ -142,7 +142,8 @@
                   </div>
                   <div class="mb-3">
                     <label for="consigneeAddress" class="form-label">
-                      收件人地</label>
+                      收件人地</label
+                    >
                     <v-Field
                       id="consigneeEmail"
                       name="地址"
@@ -158,10 +159,10 @@
                       class="invalid-feedback"
                     ></error-message>
                   </div>
-                  <button type="submit" class="btn btn-next" @click="validate">
+                  <button type="submit" class="btn btn-next mb-2" @click="validate">
                     提交訂單
                   </button>
-                  <router-link class="nav-link" to="/cart">
+                  <router-link class="" to="/cart">
                     返回購物車
                   </router-link>
                 </v-Form>
@@ -331,7 +332,7 @@ export default {
         .then((res) => {
           // this.$refs.form.resetForm()
           console.log(res)
-          this.getOrder()
+          // this.getOrder()
           this.$router.push(`/order/${res.data.orderId}`)
         })
         .catch((err) => {
@@ -504,7 +505,7 @@ h3::after {
 }
 
 .cart-list-item .pic img {
-  width: 72px;
+  width: 63px;
   padding-top: 10px;
 }
 
@@ -531,7 +532,6 @@ h3::after {
 }
 
 .cart-list-item .count {
-  line-height: 30px;
   text-align: left;
 }
 
@@ -564,27 +564,31 @@ h3::after {
   }
 
   .cart-list-item .title {
-    width: 40%;
+    width: 45%;
     margin-left: 0;
     padding-left: 20px;
   }
 
   .cart-list-title .unitPrice,
   .cart-list-item .unitPrice {
-    width: 10%;
+    width: 20%;
     margin-left: 0;
     text-align: center;
   }
 
   .cart-list-title .count,
   .cart-list-item .count {
-    width: 20%;
+    width: 10%;
     margin-left: 0;
+  }
+
+  .cart-list-item .count {
+    text-align: center;
   }
 
   .cart-list-title .totalPrice,
   .cart-list-item .totalPrice {
-    width: 10%;
+    width: 20%;
     text-align: center;
     padding-right: 0px;
   }

@@ -10,7 +10,9 @@
       <div class="row justify-content-center">
         <div class="wishList-inner">
           <h3>追蹤清單</h3>
-          <p v-if="wishProduct.length === 0">目前沒有任何收藏QQ</p>
+          <div class="pic" v-if="wishProduct.length === 0">
+            <img src="../assets/noProduct.png" alt="" class="img-fluid">
+          </div>
           <div v-else>
             <table class="table table-hover align-middle wishList-table">
               <thead>
@@ -181,6 +183,15 @@ h3::after {
 }
 
 /*-----*/
+.wishList-inner .pic{
+  margin: 50px 0;
+  text-align: center;
+}
+
+.wishList-inner .pic img{
+  width: 600px;
+}
+
 .table > :not(:first-child) {
   border-top: 0;
 }

@@ -213,7 +213,7 @@ main {
   color: #5d4c46;
   text-align: center;
   position: relative;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   opacity: 0.6;
 }
 

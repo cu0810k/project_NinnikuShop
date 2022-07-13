@@ -22,7 +22,7 @@
         </div>
         <div class="col-12 col-lg-6 product-txt">
           <h2 class="product-title">{{ product.title }}</h2>
-          <p>
+          <p class="mb-1">
             <del> {{ $currency(product.origin_price) }}</del>
           </p>
           <p class="h4 fw-bold">{{ $currency(product.price) }}</p>
@@ -352,6 +352,11 @@ h3::after {
 
 .btn-wish i {
   padding-right: 10px;
+}
+
+.btn-wish .bi-heart,
+.btn-wish .bi-heart-fill{
+  font-size: 1.1rem;
 }
 
 /*=====*/

@@ -75,11 +75,8 @@
                         <div class="cart-footer">
                           <div>小計 : {{ $currency(order.total) }}</div>
                           <div>運費 : {{ $currency(fare) }}</div>
-                          <div>
+                          <div v-show="couponCode">
                             優惠碼 : {{ couponCode }}
-                            <span style="color: #777">
-                              享{{ couponCode.replace(/[^0-9]/gi, "") }}折
-                            </span>
                           </div>
                           <div>合計 : {{ $currency(order.total) }}</div>
                         </div>
@@ -384,7 +381,7 @@ h3::after {
 }
 
 .cart-list-item .pic img {
-  width: 72px;
+  width: 63px;
   padding-top: 10px;
 }
 
@@ -409,7 +406,6 @@ h3::after {
   width: 30%;
   margin-left: 30%;
   text-align: left;
-  line-height: 30px;
 }
 
 .cart-list-title .totalPrice,

@@ -22,9 +22,9 @@
           <div class="row">
             <div class="col-12 order-content">
               <h3>購物車內容</h3>
-              <p class="cart-list-title" v-if="carts.length == 0">
-                購物車目前空空的QQ
-              </p>
+              <div class="noProduct" v-if="carts.length == 0">
+                <img src="../assets/noProduct.png" alt="" class="img-fluid" />
+              </div>
               <div class="order-content-inner" v-else>
                 <div class="cart-list-title">
                   <div class="data">商品資料</div>
@@ -53,22 +53,23 @@
                   </div>
                   <div class="count">
                     <div class="input-group">
-                      <div class="input-count-prepend"
-                        @click="updateCart(item.id, item.qty - 1)">
-                        <button class="btn" type="button">
-                          -
-                        </button>
+                      <div
+                        class="input-count-prepend"
+                        @click="updateCart(item.id, item.qty - 1)"
+                      >
+                        <button class="btn" type="button">-</button>
                       </div>
-                      <input class="form-control text-center input-count"
+                      <input
+                        class="form-control text-center input-count"
                         type="text"
                         placeholder=""
                         :value="item.qty"
                       />
-                      <div class="input-count-append"
-                        @click="updateCart(item.id, item.qty + 1)">
-                        <button class="btn" type="button">
-                          +
-                        </button>
+                      <div
+                        class="input-count-append"
+                        @click="updateCart(item.id, item.qty + 1)"
+                      >
+                        <button class="btn" type="button">+</button>
                       </div>
                     </div>
                   </div>
@@ -90,7 +91,8 @@
                   class="form-select mb-2"
                   id="tote"
                   required=""
-                  v-model="tote">
+                  v-model="tote"
+                >
                   <option value="宅配">宅配 (送貨時間1-2工作日假日除外)</option>
                   <option value="離島宅配">離島宅配 (送貨時間3-4日)</option>
                 </select>
@@ -421,6 +423,15 @@ h3::after {
   margin: 20px 0;
 }
 
+.noProduct{
+  margin: 50px 0;
+  text-align: center;
+}
+
+.noProduct img{
+  width: 600px;
+}
+
 @media (min-width: 768px) {
   .order-content,
   .order-tote,
@@ -455,6 +466,7 @@ h3::after {
 
 .cart-list-item .pic {
   width: 30%;
+  width: auto;
   position: absolute;
   top: 0;
   left: 10px;
@@ -524,13 +536,13 @@ h3::after {
   border: 1px solid #d50000;
   border-radius: 5px;
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
 }
 
-.bi-trash:hover{
-  color:#fff;
+.bi-trash:hover {
+  color: #fff;
   background: #d50000;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 @media (min-width: 576px) {

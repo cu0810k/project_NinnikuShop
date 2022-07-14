@@ -1,5 +1,4 @@
 <template>
-
   <VLoading :active="isLoading"></VLoading>
   <NavBar />
   <main>
@@ -200,7 +199,6 @@ export default {
 }
 
 @media (min-width: 992px) {
-
   .navbar {
     width: 90%;
     max-width: 900px;
@@ -211,7 +209,6 @@ export default {
   .navbar.is-scroll {
     border-radius: 0px;
   }
-
 }
 /* wrap
 ===============================*/

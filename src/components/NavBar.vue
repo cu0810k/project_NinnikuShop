@@ -9,12 +9,22 @@
           <i class="bi bi-heart"></i>
           <span class="count">{{ wishCount }}</span>
         </router-link>
+        <div class="pulse" ref="wishPulse">
+          <span class="circle01" style="--i: 1"></span>
+          <span class="circle02" style="--i: 2"></span>
+          <span class="circle03" style="--i: 3"></span>
+        </div>
       </li>
       <li class="cart">
         <router-link to="/cart">
           <i class="bi bi-cart"></i>
           <span class="count">{{ cartCount }}</span>
         </router-link>
+        <div class="pulse" ref="cartPulse">
+          <span class="circle01" style="--i: 1"></span>
+          <span class="circle02" style="--i: 2"></span>
+          <span class="circle03" style="--i: 3"></span>
+        </div>
       </li>
       <li class="d-lg-none ham">
         <a class="" href="#" @click.prevent="open">
@@ -64,6 +74,56 @@ export default {
     }
   },
   mixins: [addToWish],
+  watch: {
+    carts: {
+      immediate: false, // 初始化时让handler调用一下
+      handler (newValue, oldValue) {
+        console.log('carts-oldValue', oldValue.length)
+        console.log('carts-newValue', newValue.length)
+
+        if (!this.cartCount) {
+          return
+        }
+
+        this.$refs.cartPulse.classList = 'pulse show'
+        setTimeout(() => {
+          this.$refs.cartPulse.classList = 'pulse'
+        }, 1500)
+      }
+    },
+    cartCount: {
+      handler (newValue, oldValue) {
+        console.log('carts-oldValue', oldValue)
+        console.log('carts-newValue', newValue)
+
+        if (!newValue) {
+          return
+        }
+
+        this.$refs.cartPulse.classList = 'pulse show'
+        setTimeout(() => {
+          this.$refs.cartPulse.classList = 'pulse'
+        }, 1500)
+      }
+    },
+    wishCount: {
+      immediate: false,
+      handler (newValue, oldValue) {
+        console.log('wish-oldValue', oldValue)
+        console.log('wish-newValue', newValue)
+
+        if (!newValue) {
+          this.$refs.wishPulse.classList = 'pulse'
+          return
+        }
+
+        this.$refs.wishPulse.classList = 'pulse show'
+        setTimeout(() => {
+          this.$refs.wishPulse.classList = 'pulse'
+        }, 1500)
+      }
+    }
+  },
   methods: {
     handleScroll () {
       const scrollPostionY = window.pageYOffset
@@ -107,7 +167,9 @@ export default {
     this.bsCollapse = bsCollapse
 
     // 讀取收藏商品數量
+    console.log(this.wishProduct.length)
     this.wishCount = this.wishProduct.length
+
     // 監聽收藏
     // this.$mitt.on('update-wish', (msgData) => (this.wishCount = msgData))
 
@@ -123,10 +185,10 @@ export default {
     this.$mitt.on('update-count', (data) => {
       if (data === undefined) {
         this.getCart()
-        console.log('更新購物車')
+        // console.log('更新購物車')
       } else {
         this.wishCount = data
-        console.log('更新收藏')
+        // console.log('更新收藏')
       }
     })
   },
@@ -148,6 +210,49 @@ export default {
   .bi-heart,
   .bi-list {
     font-size: 1rem;
+  }
+}
+
+.pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border-radius: 50%;
+  display: none;
+}
+
+.pulse.show {
+  display: block;
+}
+
+.pulse span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #ff5722;
+  border-radius: 50%;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  animation: animate 1.5s linear infinite forwards;
+  animation-delay: calc(-0.5s * var(--i));
+}
+
+@keyframes animate {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
   }
 }
 
@@ -279,6 +384,8 @@ export default {
   display: flex;
   text-decoration: none;
   color: #fff;
+  position: relative;
+  z-index: 1;
 }
 
 .navbar-btn img {

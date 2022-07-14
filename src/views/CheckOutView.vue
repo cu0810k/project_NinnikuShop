@@ -90,7 +90,6 @@
                       type="text"
                       class="form-control"
                       :class="{ 'is-invalid': errors['姓名'] }"
-                      placeholder="請輸入姓名"
                       rules="required"
                       v-model="form.user.name"
                     ></v-Field>
@@ -110,7 +109,6 @@
                       type="email"
                       class="form-control"
                       :class="{ 'is-invalid': errors['信箱'] }"
-                      placeholder="請輸入 Email"
                       rules="email|required"
                       v-model="form.user.email"
                     ></v-Field>
@@ -131,7 +129,6 @@
                       type="text"
                       class="form-control"
                       :class="{ 'is-invalid': errors['電話'] }"
-                      placeholder="請輸入姓名"
                       rules="required|min:8|max:10"
                       v-model="form.user.tel"
                     ></v-Field>
@@ -150,7 +147,6 @@
                       type="email"
                       class="form-control"
                       :class="{ 'is-invalid': errors['地址'] }"
-                      placeholder="請輸入 地址"
                       rules="required"
                       v-model="form.user.address"
                     ></v-Field>

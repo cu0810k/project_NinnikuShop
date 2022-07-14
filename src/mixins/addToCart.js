@@ -5,15 +5,15 @@ export default {
     }
   },
   methods: {
-    addToCart (id) {
-      console.log(id)
+    addToCart (id, qty = 1) {
+      // console.log(id)
       const url = process.env.VUE_APP_API // https://vue3-course-api.hexschool.io/v2
       const path = process.env.VUE_APP_PATH // vue_cu
 
       const data = {
         data: {
           product_id: id,
-          qty: 1
+          qty: qty
         }
       }
 
@@ -21,7 +21,7 @@ export default {
 
       this.$http.post(`${url}/api/${path}/cart`, data)
         .then(res => {
-          console.log(res.data.message)
+          // console.log(res.data.message)
           // this.$mitt.emit('update-cart')
           this.isLoading = false
           this.$mitt.emit('update-count')

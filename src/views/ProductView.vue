@@ -30,23 +30,38 @@
 
           <div class="input-group mt-2">
             <div class="input-group-prepend">
-              <button class="btn" type="button" id="button-addon1">-</button>
+              <button
+                class="btn"
+                type="button"
+                id="button-addon1"
+                @click="updateQty('prepend')"
+              >
+                -
+              </button>
             </div>
             <input
               type="text"
               class="form-control text-center product_count"
               placeholder=""
-              value="1"
+              v-model.number="qty"
+              disabled
             />
             <div class="input-group-append">
-              <button class="btn" type="button" id="button-addon2">+</button>
+              <button
+                class="btn"
+                type="button"
+                id="button-addon2"
+                @click="updateQty('append')"
+              >
+                +
+              </button>
             </div>
           </div>
 
           <button
             type="button"
             class="btn-add rounded mt-3"
-            @click.prevent="addToCart(product.id)"
+            @click.prevent="addToCart(product.id, qty)"
           >
             加入購物車
           </button>
@@ -169,7 +184,8 @@ export default {
       product: {},
       otherProduct: [],
       tempContent: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, dolorem praesentium illo facere quiaiste ea quibusdam aspernatur nisi.Odit!',
-      isLoading: false
+      isLoading: false,
+      qty: 1
     }
   },
   mixins: [addToWish, addToCart],
@@ -180,14 +196,14 @@ export default {
   },
   watch: {
     $route (to) {
-      console.log(to)
+      // console.log(to)
 
       if (to.matched[1].path === '/product/:id') {
         this.id = to.params.id
         this.getProductData()
-        console.log('還在商品頁')
+        // console.log('還在商品頁')
       } else {
-        console.log('去別頁了')
+        // console.log('去別頁了')
       }
     }
   },
@@ -200,6 +216,7 @@ export default {
       this.isLoading = true
       this.$http.get(apiUrl)
         .then(res => {
+          // console.log(res)
           this.product = res.data.product
           this.isLoading = false
           this.getProducts()
@@ -222,6 +239,16 @@ export default {
         .catch(err => {
           console.dir(err.response.data.message)
         })
+    },
+    updateQty (status) {
+      if (status === 'append') {
+        this.qty++
+      } else {
+        if (this.qty === 1) {
+          return
+        }
+        this.qty--
+      }
     }
   },
   mounted () {
@@ -232,8 +259,7 @@ export default {
 </script>
 
 <style scoped>
-
-h3{
+h3 {
   margin-bottom: 0;
   font-weight: 600;
   color: #5d4c46;
@@ -328,20 +354,20 @@ h3::after {
   text-align: center;
   text-decoration: none;
   border: 0px;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .btn-add:hover,
-.btn-wish:hover{
+.btn-wish:hover {
   background: #d50000;
-  color:#fff;
-  transition: .3s;
+  color: #fff;
+  transition: 0.3s;
 }
 
-.btn-wish:hover{
+.btn-wish:hover {
   background: #e5e5e5;
-  color:#000;
-  transition: .3s;
+  color: #000;
+  transition: 0.3s;
 }
 
 .btn-wish {
@@ -355,7 +381,7 @@ h3::after {
 }
 
 .btn-wish .bi-heart,
-.btn-wish .bi-heart-fill{
+.btn-wish .bi-heart-fill {
   font-size: 1.1rem;
 }
 

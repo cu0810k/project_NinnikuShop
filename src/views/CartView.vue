@@ -64,6 +64,7 @@
                         type="text"
                         placeholder=""
                         :value="item.qty"
+                        disabled
                       />
                       <div
                         class="input-count-append"
@@ -126,7 +127,6 @@
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Promo code"
                       v-model="couponCode"
                       ref="promoCode"
                     />
@@ -249,6 +249,7 @@ export default {
       this.$http.put(`${url}/api/${path}/cart/${id}`, { data })
         .then(res => {
           this.getCart()
+          this.$mitt.emit('update-count')
           console.log(res)
         })
         .catch(err => {
@@ -275,6 +276,7 @@ export default {
         .then(res => {
           console.log(res)
           this.getCart()
+          this.$mitt.emit('update-count')
         })
         .catch(err => {
           console.dir(err.response.data.message)

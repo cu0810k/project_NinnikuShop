@@ -11,8 +11,8 @@
         </router-link>
         <div class="pulse" ref="wishPulse">
           <span class="circle01" style="--i: 1"></span>
-          <span class="circle02" style="--i: 2"></span>
-          <span class="circle03" style="--i: 3"></span>
+          <!-- <span class="circle02" style="--i: 2"></span>
+          <span class="circle03" style="--i: 3"></span> -->
         </div>
       </li>
       <li class="cart">
@@ -22,8 +22,8 @@
         </router-link>
         <div class="pulse" ref="cartPulse">
           <span class="circle01" style="--i: 1"></span>
-          <span class="circle02" style="--i: 2"></span>
-          <span class="circle03" style="--i: 3"></span>
+          <!-- <span class="circle02" style="--i: 2"></span> -->
+          <!-- <span class="circle03" style="--i: 3"></span> -->
         </div>
       </li>
       <li class="d-lg-none ham">
@@ -239,7 +239,15 @@ export default {
   width: 100%;
   height: 100%;
   animation: animate 1.5s linear infinite forwards;
-  animation-delay: calc(-0.5s * var(--i));
+  /* animation-delay: calc(-0.5s * var(--i)); */
+}
+
+.collect .pulse span {
+  background: #ff764d;
+}
+
+.cart .pulse span {
+  background: #aaaaaa;
 }
 
 @keyframes animate {
@@ -262,11 +270,13 @@ export default {
 .collect {
   background: #fde310;
   position: relative;
+  overflow: hidden;
 }
 
 .cart {
   background: #000;
   position: relative;
+  overflow: hidden;
 }
 
 .collect .count,

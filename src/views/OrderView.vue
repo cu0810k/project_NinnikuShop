@@ -79,7 +79,7 @@
                   <span>收件人名稱 : {{ user.name }}</span>
                 </div>
                 <div class="p-1 sum">
-                  <span>收件人電話號碼 : {{ user.tel }}</span>
+                  <span>收件人電話 : {{ user.tel }}</span>
                 </div>
                 <div class="p-1 sum">
                   <span>收件人地址 : {{ user.address }}</span>

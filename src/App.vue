@@ -6,6 +6,18 @@
   <router-view />
 </template>
 
+<script>
+export default {
+  name: 'App',
+  watch: {
+    $route (to) {
+      const nowTitle = to.meta.title || 'ninniku shop'
+      document.title = nowTitle
+    }
+  }
+}
+</script>
+
 <style lang="scss">
 @import "~bootstrap/scss/bootstrap";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
@@ -24,9 +36,9 @@ ul li {
 }
 
 .page-link:focus {
-    outline: 0;
-    box-shadow: 0 0 0 0 #000;
-    background: transparent;
+  outline: 0;
+  box-shadow: 0 0 0 0 #000;
+  background: transparent;
 }
 
 .btn-check:focus + .btn,
@@ -39,5 +51,4 @@ ul li {
   border-color: #d8d8d6;
   box-shadow: 0 0 0 rgba(0, 0, 0, 0);
 }
-
 </style>

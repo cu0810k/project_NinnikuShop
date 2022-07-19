@@ -20,7 +20,10 @@ const routes = [
       {
         path: '',
         name: 'home',
-        component: () => import('../views/HomeView.vue')
+        component: () => import('../views/HomeView.vue'),
+        meta: {
+          title: 'ninniku shop'
+        }
       },
       {
         path: 'products',

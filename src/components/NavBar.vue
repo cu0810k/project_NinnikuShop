@@ -78,8 +78,8 @@ export default {
     carts: {
       immediate: false, // 初始化时让handler调用一下
       handler (newValue, oldValue) {
-        console.log('carts-oldValue', oldValue.length)
-        console.log('carts-newValue', newValue.length)
+        // console.log('carts-oldValue', oldValue.length)
+        // console.log('carts-newValue', newValue.length)
 
         if (!this.cartCount) {
           return
@@ -93,8 +93,8 @@ export default {
     },
     cartCount: {
       handler (newValue, oldValue) {
-        console.log('carts-oldValue', oldValue)
-        console.log('carts-newValue', newValue)
+        // console.log('carts-oldValue', oldValue)
+        // console.log('carts-newValue', newValue)
 
         if (!newValue) {
           return
@@ -109,8 +109,8 @@ export default {
     wishCount: {
       immediate: false,
       handler (newValue, oldValue) {
-        console.log('wish-oldValue', oldValue)
-        console.log('wish-newValue', newValue)
+        // console.log('wish-oldValue', oldValue)
+        // console.log('wish-newValue', newValue)
 
         if (!newValue) {
           this.$refs.wishPulse.classList = 'pulse'
@@ -167,7 +167,7 @@ export default {
     this.bsCollapse = bsCollapse
 
     // 讀取收藏商品數量
-    console.log(this.wishProduct.length)
+    // console.log(this.wishProduct.length)
     this.wishCount = this.wishProduct.length
 
     // 監聽收藏

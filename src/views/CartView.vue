@@ -218,7 +218,7 @@ export default {
           this.carts = res.data.data.carts
           this.final_total = res.data.data.final_total
           this.total = res.data.data.total
-          console.log(res)
+          // console.log(res)
           this.isLoading = false
         })
         .catch(err => {
@@ -233,7 +233,7 @@ export default {
       if (!qty) {
         this.$http.delete(`${url}/api/${path}/cart/${id}`)
           .then(res => {
-            console.log(res)
+            // console.log(res)
             return this.getCart()
           })
           .catch(err => {
@@ -250,7 +250,7 @@ export default {
         .then(res => {
           this.getCart()
           this.$mitt.emit('update-count')
-          console.log(res)
+          // console.log(res)
         })
         .catch(err => {
           console.dir(err.response.data.message)
@@ -264,7 +264,7 @@ export default {
         couponCode: this.couponCode || ''
       }
 
-      console.log(data)
+      // console.log(data)
       this.$router.push('/checkout')
       localStorage.setItem('orderData', JSON.stringify(data))
     },
@@ -274,7 +274,7 @@ export default {
 
       this.$http.delete(`${url}/api/${path}/cart/${id}`)
         .then(res => {
-          console.log(res)
+          // console.log(res)
           this.getCart()
           this.$mitt.emit('update-count')
         })

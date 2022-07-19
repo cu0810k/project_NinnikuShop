@@ -119,7 +119,7 @@ export default {
       this.FavProducts()
     },
     selectAll () {
-      console.log('selectAll')
+      // console.log('selectAll')
       this.temDelProduct = [...this.wishProduct]
     }
   },

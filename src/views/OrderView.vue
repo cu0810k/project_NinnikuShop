@@ -29,30 +29,31 @@
                   <div class="count d-none d-sm-block">數量</div>
                   <div class="count d-none d-sm-block">小計</div>
                 </div>
-                <div
-                  class="cart-list-item"
-                  v-for="item in order.products"
-                  :key="item.id"
-                >
-                  <div class="pic">
-                    <img
-                      :src="item.product.imageUrl"
-                      :alt="item.product.title"
-                      class="img-fluid"
-                    />
+                <template v-for="item in order.products" :key="item.id">
+                  <div
+                    class="cart-list-item"
+                    v-if="item.product.category !== '運費'"
+                  >
+                    <div class="pic">
+                      <img
+                        :src="item.product.imageUrl"
+                        :alt="item.product.title"
+                        class="img-fluid"
+                      />
+                    </div>
+                    <div class="title">
+                      {{ item.product.title }}
+                    </div>
+                    <div class="count">
+                      <span class="mb-show">數量 :</span>
+                      {{ item.qty }}
+                    </div>
+                    <div class="totalPrice">
+                      <span class="d-sm-none">小計</span>
+                      NT$ {{ item.final_total }}
+                    </div>
                   </div>
-                  <div class="title">
-                    {{ item.product.title }}
-                  </div>
-                  <div class="count">
-                    <span class="mb-show">數量 :</span>
-                    {{ item.qty }}
-                  </div>
-                  <div class="totalPrice">
-                    <span class="d-sm-none">小計</span>
-                    NT$ {{ item.final_total }}
-                  </div>
-                </div>
+                </template>
                 <div class="p-1 sum">
                   <span>運送方式：</span>
                   <span>{{ user.tote }}</span>
@@ -60,6 +61,10 @@
                 <div class="p-1 sum">
                   <span>付款方式：</span>
                   <span>{{ user.pay }}</span>
+                </div>
+                <div class="p-1 sum">
+                  <span>運費：</span>
+                  <span>{{ $currency(fare) }}</span>
                 </div>
                 <div class="p-1 sum">
                   <span>總計：</span>
@@ -115,7 +120,7 @@ export default {
 
       this.$http.get(`${url}/api/${path}/order/${this.id}`)
         .then((res) => {
-          console.log(res)
+          // console.log(res)
           this.isLoading = false
           this.id = res.data.order.id
           this.order = res.data.order

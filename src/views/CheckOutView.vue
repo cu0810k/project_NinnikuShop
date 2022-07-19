@@ -214,7 +214,7 @@ export default {
           this.carts = res.data.data.carts
           this.final_total = res.data.data.final_total
           this.total = res.data.data.total
-          console.log(res)
+          // console.log(res)
           this.isLoading = false
 
           this.countTempTotal()
@@ -252,7 +252,7 @@ export default {
 
       this.$http.post(`${url}/api/${path}/cart`, data)
         .then(res => {
-          console.log(res)
+          // console.log(res)
         })
         .catch(err => {
           console.dir(err.response.data.message)
@@ -274,7 +274,7 @@ export default {
 
       this.$http.post(`${url}/api/${path}/cart`, data)
         .then(res => {
-          console.log(res)
+          // console.log(res)
           // 加完運費後判斷有沒有優惠券
           if (this.couponCode) {
             this.addCoupon(this.couponCode)
@@ -295,7 +295,7 @@ export default {
       }
       this.$http.post(`${url}/api/${path}/coupon`, { data })
         .then(res => {
-          console.log(res)
+          // console.log(res)
           this.createOrder()
         })
         .catch(err => {
@@ -303,7 +303,7 @@ export default {
         })
     },
     cartEnd () {
-      console.log('提交')
+      // console.log('提交')
       // 購物車做最後的整理
       // 運費  -N6i1qTb53JNo27jsmeD
       if (this.fare) {
@@ -327,7 +327,7 @@ export default {
       this.$http.post(`${url}/api/${path}/order`, { data })
         .then((res) => {
           // this.$refs.form.resetForm()
-          console.log(res)
+          // console.log(res)
           // this.getOrder()
           this.$router.push(`/order/${res.data.orderId}`)
         })
@@ -341,7 +341,7 @@ export default {
 
       this.$http.get(`${url}/api/${path}/orders`)
         .then((res) => {
-          console.log(res)
+          // console.log(res)
         })
         .catch((err) => {
           console.log(err)

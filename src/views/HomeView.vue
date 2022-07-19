@@ -169,10 +169,10 @@ export default {
     this.$mitt.on('update-count', (data) => {
       if (data === undefined) {
         this.getCart()
-        console.log('更新購物車')
+        // console.log('更新購物車')
       } else {
         this.wishCount = data
-        console.log('更新收藏')
+        // console.log('更新收藏')
       }
     })
   },

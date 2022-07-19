@@ -54,8 +54,8 @@ const routes = [
         component: () => import('../views/CheckOutView.vue')
       },
       {
-        path: 'order',
-        component: () => import('../views/OrderView.vue')
+        path: 'demand',
+        component: () => import('../views/DemandView.vue')
       }
     ]
   }

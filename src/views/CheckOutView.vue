@@ -139,7 +139,7 @@
                   </div>
                   <div class="mb-3">
                     <label for="consigneeAddress" class="form-label">
-                      收件人地</label
+                      收件人地址</label
                     >
                     <v-Field
                       id="consigneeEmail"

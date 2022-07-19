@@ -45,7 +45,7 @@
         </li>
         <li class="nav-item">
           <!-- <a class="nav-link" href="#">訂單查詢</a> -->
-          <router-link class="nav-link" to="/order"> 訂單查詢 </router-link>
+          <router-link class="nav-link" to="/demand"> 訂單查詢 </router-link>
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="#">常見問題</a>
